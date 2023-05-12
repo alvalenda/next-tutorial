@@ -1,9 +1,23 @@
-import { FC } from "react";
+import axios from "axios";
 
 interface PageProps {}
 
-const Page: FC<PageProps> = () => {
-  return <div className="text-slate-200 text-7xl">Page</div>;
+const Page = async () => {
+  const wait = (ms: number) => new Promise((res) => setTimeout(res, ms));
+
+  await wait(3000);
+
+  // throw new Error("Authorization failed");
+
+  const { data } = await axios.get(
+    "https://jsonplaceholder.typicode.com/todos/2"
+  );
+
+  return (
+    <div className="text-slate-200 text-5xl">
+      {JSON.stringify(data, null, 4)}
+    </div>
+  );
 };
 
 export default Page;
