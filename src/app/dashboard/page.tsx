@@ -14,7 +14,7 @@ const Page = async () => {
   );
 
   return (
-    <div className="text-slate-200 text-5xl">
+    <div className="text-slate-200 text-5xl dark:text-red-500">
       {JSON.stringify(data, null, 4)}
     </div>
   );
