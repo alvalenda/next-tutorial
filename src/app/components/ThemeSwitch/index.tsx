@@ -1,55 +1,45 @@
 "use client";
-// import { useTheme } from "next-themes";
+import { useTheme } from "next-themes";
 import { FC, useEffect, useState } from "react";
 
 interface PageProps {}
 
+const themes = [{ name: "Light" }, { name: "Dark" }, { name: "System" }];
+
 const ThemeSwitch: FC<PageProps> = () => {
   const [mounted, setMounted] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    if (localStorage.getItem("darkMode") === "true") {
-      setDarkMode(() => true);
-      const html = document.querySelector("html");
-      if (html) {
-        html.classList.add("dark");
-      }
-    }
-
     setMounted(() => true);
   }, []);
 
   if (!mounted) return null;
 
   return (
-    <>
-      <div className="flex items-center justify-center w-full h-full text-slate-900">
-        <button
-          className="w-12 h-12 p-3 rounded-full bg-slate-200 dark:bg-slate-800"
-          onClick={() => {
-            const html = document.querySelector("html");
-            if (html) {
-              html.classList.toggle("dark");
-              setDarkMode(!darkMode);
-              localStorage.setItem("darkMode", (!darkMode).toString());
-            }
-          }}
+    <div className="p-8 flex justify-between items-center font-bold text-xl bg-slate-200 dark:bg-slate-900 text-slate-900 dark:text-slate-200">
+      <span>
+        The current theme is: <strong>{theme}</strong>
+      </span>
+      <div>
+        <label htmlFor="theme-select" className="sr-only mr-2">
+          Choose theme:
+        </label>
+        <select
+          name="theme"
+          id="theme-select"
+          className="bg-white text-gray-800 border-gray-800 border py-1 px-3"
+          onChange={(e) => setTheme(e.currentTarget.value)}
+          value={theme}
         >
-          <svg
-            className="w-6 h-6 text-slate-800 dark:text-slate-200"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              clipRule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zM2.05 10a7.95 7.95 0 001.5 4.5l1.9-1.1a5.95 5.95 0 01-.9-3.4 5.95 5.95 0 01.9-3.4L3.55 5.5A7.95 7.95 0 002.05 10z"
-              fillRule="evenodd"
-            />
-          </svg>
-        </button>
+          {themes.map((t) => (
+            <option key={t.name.toLowerCase()} value={t.name.toLowerCase()}>
+              {t.name}
+            </option>
+          ))}
+        </select>
       </div>
-    </>
+    </div>
   );
 };
 
