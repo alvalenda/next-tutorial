@@ -1,5 +1,7 @@
-import "./globals.css";
 import { Inter } from "next/font/google";
+import "./globals.css";
+// import Providers from "./providers";
+import ThemeSwitch from "./components/ThemeSwitch";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +17,31 @@ interface LayoutProps {
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="description" content={metadata.description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{metadata.title}</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icon.png" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="apple-mobile-web-app-title" content={metadata.title} />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+        <meta name="description" content={metadata.description} />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-tap-highlight" content="no" />
+      </head>
+
+      <body className={inter.className}>
+        {/* <Providers> */}
+        <ThemeSwitch />
+        {children}
+        {/* </Providers> */}
+      </body>
     </html>
   );
 }
