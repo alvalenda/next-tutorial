@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-// import Providers from "./providers";
+import Providers from "./providers";
 import ThemeSwitch from "./components/ThemeSwitch";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -37,10 +37,10 @@ export default function RootLayout({ children }: LayoutProps) {
       </head>
 
       <body className={inter.className}>
-        {/* <Providers> */}
-        <ThemeSwitch />
-        {children}
-        {/* </Providers> */}
+        <Providers>
+          <ThemeSwitch />
+          {children}
+        </Providers>
       </body>
     </html>
   );
