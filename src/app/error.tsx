@@ -22,7 +22,7 @@ const Error: FC<ErrorProps> = ({ error, reset }) => {
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <button
-            className="px-4 py-2 bg-sky-600 dark:bg-sky-400 rounded-md font-bold"
+            className="px-4 py-2 bg-sky-600 text-slate-200 dark:text-slate-900 dark:bg-sky-400 rounded-md font-bold"
             onClick={reset}
           >
             Try Again
