@@ -1,4 +1,4 @@
-import { AuthRequiredException } from "@/app/lib/exceptions";
+import { AuthRequiredException } from "@/lib/exceptions";
 import { FC } from "react";
 
 interface PageProps {}
