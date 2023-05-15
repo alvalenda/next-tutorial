@@ -4,3 +4,10 @@ export class AuthRequiredException extends Error {
     this.name = "AuthRequiredException";
   }
 }
+
+export class NotFoundException extends Error {
+  constructor(message = "The requested resource was not found") {
+    super(message);
+    this.name = "NotFoundException";
+  }
+}
