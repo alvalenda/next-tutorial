@@ -2,7 +2,7 @@ import { FC } from "react";
 
 interface PageProps {}
 
-const page: FC<PageProps> = () => {
+const Page: FC<PageProps> = () => {
   return (
     <div className="text-xl w-1/4 h-1/2 mx-auto mt-60">
       <form className="flex flex-col flex-wrap basis-1">
@@ -21,4 +21,4 @@ const page: FC<PageProps> = () => {
   );
 };
 
-export default page;
+export default Page;
