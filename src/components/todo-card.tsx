@@ -19,7 +19,7 @@ const TodoCard: FC<PageProps> = (props) => {
   const { title, description, content, footer } = props;
 
   return (
-    <Card className="bg-card text-card-foreground">
+    <Card>
       <CardHeader>
         <CardTitle>{title ? title : "Card Title"}</CardTitle>
         <CardDescription>
