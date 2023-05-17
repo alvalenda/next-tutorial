@@ -6,9 +6,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Link from "next/link";
 import { FC } from "react";
+import { buttonVariants } from "./ui/button";
+import { Icons } from "./icons";
 
 interface PageProps {
+  id: number;
   title: string;
   description?: string;
   content?: string;
@@ -16,10 +20,10 @@ interface PageProps {
 }
 
 const TodoCard: FC<PageProps> = (props) => {
-  const { title, description, content, footer } = props;
+  const { title, description, content, footer, id } = props;
 
   return (
-    <Card>
+    <Card className="flex flex-col justify-between align-bottom">
       <CardHeader>
         <CardTitle>{title ? title : "Card Title"}</CardTitle>
         <CardDescription>
@@ -29,8 +33,22 @@ const TodoCard: FC<PageProps> = (props) => {
       <CardContent>
         <p>{content ? content : "Card Content"}</p>
       </CardContent>
-      <CardFooter>
+      <CardContent>
         <p>{footer === "true" ? "Completa" : "Incompleta"}</p>
+      </CardContent>
+      <CardFooter className="flex justify-around align-bottom">
+        <Icons.link className="absolute cursor-pointer" />
+        <Link
+          href={`/dashboard/${id}`}
+          className={buttonVariants({ variant: "outline" })}
+          style={{
+            width: "8px",
+            height: "8px",
+            placeSelf: "center",
+            position: "relative",
+            bottom: "0px",
+          }}
+        />
       </CardFooter>
     </Card>
   );
