@@ -1,5 +1,6 @@
 import {
   Binary,
+  Link2,
   Laptop,
   LucideProps,
   Moon,
@@ -16,6 +17,7 @@ export const Icons = {
   moon: Moon,
   sun: SunMedium,
   laptop: Laptop,
+  link: Link2,
   twitter: Twitter,
   logo: Binary,
   // logo: (props: LucideProps) => (
