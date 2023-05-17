@@ -34,7 +34,7 @@ const Page = async ({}: PageProps) => {
   }));
 
   return (
-    <div className="mx-2 my-2 bg-slate-100 rounded-md dark:bg-transparent grid grid-cols-1 gap-4 p-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
+    <div className="mx-2 my-2 bg-slate-100 rounded-sm dark:bg-transparent grid grid-cols-1 gap-4 p-5 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
       {todoProps.map((todoProp, index) => (
         <TodoCard key={"todo" + index} {...todoProp} />
       ))}

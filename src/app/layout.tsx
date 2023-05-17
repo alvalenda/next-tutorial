@@ -1,6 +1,4 @@
-import { ModeToggle } from "@/components/mode-toggle";
-import ThemeSwitch from "@/components/theme-switch";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
 import { Metadata } from "next";
@@ -32,16 +30,16 @@ interface LayoutProps {
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head />
 
-      <body className={inter.className}>
+      <body
+        className={inter.className + "min-h-screen bg-background antialiased"}
+      >
         <Providers attribute="class" defaultTheme="system" enableSystem>
-          <ThemeToggle />
-          <ModeToggle />
-          <ThemeSwitch />
           {children}
           {/* ThemeSwitch só funcionava abaixo do children, agora funciona acima */}
+          <TailwindIndicator />
         </Providers>
       </body>
     </html>
