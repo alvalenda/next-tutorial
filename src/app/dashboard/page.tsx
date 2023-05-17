@@ -1,6 +1,6 @@
 import TodoCard from "@/components/todo-card";
 import axios from "axios";
-import { useEffect } from "react";
+import Link from "next/link";
 
 interface PageProps {}
 
@@ -27,6 +27,7 @@ const Page = async ({}: PageProps) => {
   if (!todoList) return null;
 
   const todoProps: TodoProps[] = todoList.map((todo) => ({
+    id: todo.id,
     title: `TODO #${todo.id}`,
     description: `TODO criada em ${Date.now()}`,
     content: todo.title,
@@ -45,6 +46,7 @@ const Page = async ({}: PageProps) => {
 export default Page;
 
 interface TodoProps {
+  id: number;
   title: string;
   description: string;
   content: string;
