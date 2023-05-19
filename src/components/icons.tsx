@@ -23,7 +23,7 @@ export const Icons = {
   logo: () => (
     <img
       src={"/av-big.png"}
-      className="aspect-auto w-7"
+      className="aspect-auto p-0.5 w-8 dark:bg-slate-800 dark:rounded-sm"
       alt="Logo"
       width="40"
       height="40"
