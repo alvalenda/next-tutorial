@@ -7,6 +7,10 @@ export const dashboardConfig: DashboardConfig = {
       href: "/dashboard",
     },
     {
+      title: "Rendering",
+      href: "/rendering",
+    },
+    {
       title: "Support",
       href: "/support",
       disabled: true,

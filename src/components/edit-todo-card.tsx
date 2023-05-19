@@ -6,10 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Link from "next/link";
 import { FC } from "react";
-import { buttonVariants } from "./ui/button";
-import { Icons } from "./icons";
 
 interface PageProps {
   id: number;
