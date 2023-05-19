@@ -20,7 +20,9 @@ export const Icons = {
   laptop: Laptop,
   link: Link2,
   twitter: Twitter,
-  logo: () => (
+  logo: Binary,
+
+  logoAv: () => (
     <img
       src={"/av-big.png"}
       className="aspect-auto p-0.5 w-8 dark:bg-slate-800 dark:rounded-sm"
@@ -30,7 +32,7 @@ export const Icons = {
     />
   ),
 
-  ["logo-big"]: () => (
+  logoBig: () => (
     <img
       src={"/av-big.png"}
       alt="Logo"
