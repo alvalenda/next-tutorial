@@ -1,6 +1,13 @@
 import EditTodoCard from "@/components/edit-todo-card";
 import axios from "axios";
 
+export async function generateStaticParams() {
+  const posts = [1, 2, 3];
+
+  return posts.map((post) => ({
+    postId: String(String(post)),
+  }));
+}
 interface PageProps {
   params: {
     postId: string;
@@ -11,7 +18,7 @@ interface PageProps {
   };
 }
 
-const Page = async ({ params }: PageProps) => {
+const page = async ({ params }: PageProps) => {
   const { postId } = params;
   const { data } = await axios.get(
     `https://jsonplaceholder.typicode.com/todos/${postId}`
@@ -32,7 +39,7 @@ const Page = async ({ params }: PageProps) => {
   );
 };
 
-export default Page;
+export default page;
 
 interface TodoProps {
   id: number;
