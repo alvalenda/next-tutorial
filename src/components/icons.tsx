@@ -9,6 +9,7 @@ import {
   X,
   type Icon as LucideIcon,
 } from "lucide-react";
+import Image from "next/image";
 
 export type Icon = LucideIcon;
 
@@ -23,7 +24,7 @@ export const Icons = {
   logo: Binary,
 
   logoAv: () => (
-    <img
+    <Image
       src={"/av-big.png"}
       className="aspect-auto p-0.5 w-8 dark:bg-slate-800 dark:rounded-sm"
       alt="Logo"
@@ -33,7 +34,7 @@ export const Icons = {
   ),
 
   logoBig: () => (
-    <img
+    <Image
       src={"/av-big.png"}
       alt="Logo"
       className="aspect-auto"
