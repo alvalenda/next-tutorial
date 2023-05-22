@@ -1,7 +1,7 @@
 import { Todo } from "@/types";
 
 export default async function sitemap() {
-  const res = await fetch("http://jsonplaceholder.typicode.com/posts");
+  const res = await fetch("http://jsonplaceholder.typicode.com/todos");
   const allPosts = (await res.json()) as Todo[];
 
   const posts = allPosts.map((post) => ({
