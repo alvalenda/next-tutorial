@@ -1,4 +1,4 @@
-import TodoCard from "@/components/todo-card";
+import TodoCard, { CardSkeleton } from "@/components/todo-card";
 import { Todo } from "@/types";
 import axios from "axios";
 import { Suspense } from "react";
@@ -11,38 +11,15 @@ const Page = async ({}: PageProps) => {
   // await wait(3000);
   const todoIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
-  const getTodos = async () => {
-    const todosData = await Promise.all(
-      todoIds.map(async (id) => {
-        const { data } = await axios.get(
-          `https://jsonplaceholder.typicode.com/todos/${id}`
-        );
-        return data;
-      })
-    );
-    return todosData;
-  };
-
-  const todoList: Todo[] = await getTodos();
-
-  if (!todoList) return null;
-
-  const todoProps: TodoProps[] = todoList.map((todo) => ({
-    id: todo.id,
-    title: `TODO #${todo.id}`,
-    description: `TODO criada em ${Date.now()}`,
-    content: todo.title,
-    footer: `${todo.completed}`,
-  }));
-
   return (
     <div className="mx-2 my-2 bg-slate-100 rounded-sm dark:bg-transparent grid grid-cols-1 gap-4 p-5 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
-      {todoProps.map((todoProp, index) => (
+      {todoIds.map((todoId, index) => (
         <Suspense
           key={"suspense" + index}
-          fallback={<div className="animate-pulse">Loading...</div>}
+          fallback={<CardSkeleton key={"skeleton" + index} />}
         >
-          <TodoCard key={"todo" + index} {...todoProp} />
+          {/* @ts-expect-error Async Server Component */}
+          <TodoCard key={"todo" + todoId} id={todoId} />
         </Suspense>
       ))}
     </div>
