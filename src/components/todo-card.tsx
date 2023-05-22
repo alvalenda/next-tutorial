@@ -6,35 +6,57 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Todo } from "@/types";
+import axios from "axios";
 import Link from "next/link";
-import { FC } from "react";
-import { buttonVariants } from "./ui/button";
 import { Icons } from "./icons";
+import { buttonVariants } from "./ui/button";
+import { getDateToLocale } from "@/lib/utils";
 
 interface PageProps {
   id: number;
-  title: string;
-  description?: string;
-  content?: string;
-  footer: string;
 }
 
-const TodoCard: FC<PageProps> = (props) => {
-  const { title, description, content, footer, id } = props;
+const TodoCard = async (props: PageProps) => {
+  const { id } = props;
+
+  const fakeDelay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+
+  await fakeDelay(Math.random() * 5000 + 5);
+
+  const getTodo = async () => {
+    const { data } = await axios.get(
+      `https://jsonplaceholder.typicode.com/todos/${id}`
+    );
+    return data as Todo;
+  };
+
+  const data: Todo = await getTodo();
+
+  const { title, description, content, footer } = {
+    title: `TODO #${data.id}`,
+    description: `criada em ${getDateToLocale(Date.now())}`,
+    content: data.title,
+    footer: `${data.completed}`,
+  };
 
   return (
     <Card className="flex flex-col justify-between align-bottom">
       <CardHeader>
-        <CardTitle>{title ? title : "Card Title"}</CardTitle>
-        <CardDescription>
+        <CardTitle className="text-center">
+          {title ? title : "Card Title"}
+        </CardTitle>
+        <CardDescription className="text-center">
           {description ? description : "Card Description"}
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <p>{content ? content : "Card Content"}</p>
+        <p className="text-center">{content ? content : "Card Content"}</p>
       </CardContent>
       <CardContent>
-        <p>{footer === "true" ? "Completa" : "Incompleta"}</p>
+        <p className="text-center">
+          {footer === "true" ? "Completa" : "Incompleta"}
+        </p>
       </CardContent>
       <CardFooter className="flex justify-around align-bottom">
         <Link
@@ -55,3 +77,27 @@ const TodoCard: FC<PageProps> = (props) => {
 };
 
 export default TodoCard;
+
+export const CardSkeleton = () => {
+  return (
+    <Card className="flex flex-col justify-between align-bottom">
+      <CardHeader>
+        <CardTitle>
+          <div className="w-full h-6 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
+        </CardTitle>
+        <CardDescription>
+          <div className="w-full h-4 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="w-full h-32 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
+      </CardContent>
+      <CardContent>
+        <div className="w-full h-4 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
+      </CardContent>
+      <CardFooter className="flex justify-around align-bottom">
+        <div className="w-full h-4 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
+      </CardFooter>
+    </Card>
+  );
+};
