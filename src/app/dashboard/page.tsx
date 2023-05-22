@@ -1,6 +1,7 @@
 import TodoCard from "@/components/todo-card";
+import { Todo } from "@/types";
 import axios from "axios";
-import Link from "next/link";
+import { Suspense } from "react";
 
 interface PageProps {}
 
@@ -8,7 +9,7 @@ const Page = async ({}: PageProps) => {
   // const wait = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
   // await wait(3000);
-  const todoIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  const todoIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   const getTodos = async () => {
     const todosData = await Promise.all(
@@ -37,7 +38,12 @@ const Page = async ({}: PageProps) => {
   return (
     <div className="mx-2 my-2 bg-slate-100 rounded-sm dark:bg-transparent grid grid-cols-1 gap-4 p-5 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
       {todoProps.map((todoProp, index) => (
-        <TodoCard key={"todo" + index} {...todoProp} />
+        <Suspense
+          key={"suspense" + index}
+          fallback={<div className="animate-pulse">Loading...</div>}
+        >
+          <TodoCard key={"todo" + index} {...todoProp} />
+        </Suspense>
       ))}
     </div>
   );
@@ -51,11 +57,4 @@ interface TodoProps {
   description: string;
   content: string;
   footer: string;
-}
-
-interface Todo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
 }

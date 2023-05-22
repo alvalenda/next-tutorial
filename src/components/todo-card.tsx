@@ -37,18 +37,18 @@ const TodoCard: FC<PageProps> = (props) => {
         <p>{footer === "true" ? "Completa" : "Incompleta"}</p>
       </CardContent>
       <CardFooter className="flex justify-around align-bottom">
-        <Icons.link className="absolute cursor-pointer" />
         <Link
           href={`/dashboard/${id}`}
           className={buttonVariants({ variant: "outline" })}
           style={{
-            width: "8px",
-            height: "8px",
+            height: "1.5rem",
             placeSelf: "center",
             position: "relative",
             bottom: "0px",
           }}
-        />
+        >
+          <Icons.link className="absolute hover:cursor-pointer" />
+        </Link>
       </CardFooter>
     </Card>
   );
