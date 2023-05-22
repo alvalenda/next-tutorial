@@ -21,3 +21,10 @@ export type DashboardConfig = {
   mainNav: MainNavItem[];
   sidebarNav: SidebarNavItem[];
 };
+
+export interface Todo {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
