@@ -1,6 +1,6 @@
 import TodoCard from "@/components/todo-card";
+import { Todo } from "@/types";
 import axios from "axios";
-import Link from "next/link";
 import { Suspense } from "react";
 
 interface PageProps {}
@@ -57,11 +57,4 @@ interface TodoProps {
   description: string;
   content: string;
   footer: string;
-}
-
-interface Todo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
 }
