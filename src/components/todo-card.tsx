@@ -43,16 +43,20 @@ const TodoCard = async (props: PageProps) => {
   return (
     <Card className="flex flex-col justify-between align-bottom">
       <CardHeader>
-        <CardTitle>{title ? title : "Card Title"}</CardTitle>
-        <CardDescription>
+        <CardTitle className="text-center">
+          {title ? title : "Card Title"}
+        </CardTitle>
+        <CardDescription className="text-center">
           {description ? description : "Card Description"}
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <p>{content ? content : "Card Content"}</p>
+        <p className="text-center">{content ? content : "Card Content"}</p>
       </CardContent>
       <CardContent>
-        <p>{footer === "true" ? "Completa" : "Incompleta"}</p>
+        <p className="text-center">
+          {footer === "true" ? "Completa" : "Incompleta"}
+        </p>
       </CardContent>
       <CardFooter className="flex justify-around align-bottom">
         <Link
@@ -79,20 +83,20 @@ export const CardSkeleton = () => {
     <Card className="flex flex-col justify-between align-bottom">
       <CardHeader>
         <CardTitle>
-          <div className="w-full h-6 rounded-md animate-pulse bg-slate-800" />
+          <div className="w-full h-6 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
         </CardTitle>
         <CardDescription>
-          <div className="w-full h-6 rounded-md animate-pulse bg-slate-800" />
+          <div className="w-full h-4 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="w-full h-16 rounded-md animate-pulse bg-slate-800" />
+        <div className="w-full h-32 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
       </CardContent>
       <CardContent>
-        <div className="w-full h-16 rounded-md animate-pulse bg-slate-800" />
+        <div className="w-full h-4 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
       </CardContent>
       <CardFooter className="flex justify-around align-bottom">
-        <div className="w-full h-6 rounded-md animate-pulse bg-slate-800" />
+        <div className="w-full h-4 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
       </CardFooter>
     </Card>
   );
