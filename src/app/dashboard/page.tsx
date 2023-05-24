@@ -1,11 +1,10 @@
-import TodoCard, { CardSkeleton } from "@/components/todo-card";
-import { Todo } from "@/types";
-import axios from "axios";
+import TodoCard from "@/components/todo-card";
+import { TodoSkeleton } from "@/components/todo-skeleton";
 import { Suspense } from "react";
 
 interface PageProps {}
 
-const Page = async ({}: PageProps) => {
+const Dashboard = async ({}: PageProps) => {
   // const wait = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
   // await wait(3000);
@@ -16,7 +15,7 @@ const Page = async ({}: PageProps) => {
       {todoIds.map((todoId, index) => (
         <Suspense
           key={"suspense" + index}
-          fallback={<CardSkeleton key={"skeleton" + index} />}
+          fallback={<TodoSkeleton key={"skeleton" + index} />}
         >
           {/* @ts-expect-error Async Server Component */}
           <TodoCard key={"todo" + todoId} id={todoId} />
@@ -26,7 +25,7 @@ const Page = async ({}: PageProps) => {
   );
 };
 
-export default Page;
+export default Dashboard;
 
 interface TodoProps {
   id: number;

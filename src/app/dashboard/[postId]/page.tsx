@@ -18,7 +18,7 @@ interface PageProps {
   };
 }
 
-const page = async ({ params }: PageProps) => {
+const TodoById = async ({ params }: PageProps) => {
   const { postId } = params;
   const { data } = await axios.get(
     `https://jsonplaceholder.typicode.com/todos/${postId}`
@@ -39,7 +39,7 @@ const page = async ({ params }: PageProps) => {
   );
 };
 
-export default page;
+export default TodoById;
 
 interface TodoProps {
   id: number;
