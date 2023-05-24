@@ -77,27 +77,3 @@ const TodoCard = async (props: PageProps) => {
 };
 
 export default TodoCard;
-
-export const CardSkeleton = () => {
-  return (
-    <Card className="flex flex-col justify-between align-bottom">
-      <CardHeader>
-        <CardTitle>
-          <div className="w-full h-6 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
-        </CardTitle>
-        <CardDescription>
-          <div className="w-full h-4 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="w-full h-32 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
-      </CardContent>
-      <CardContent>
-        <div className="w-full h-4 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
-      </CardContent>
-      <CardFooter className="flex justify-around align-bottom">
-        <div className="w-full h-4 rounded-md animate-pulse bg-slate-300 dark:bg-slate-800" />
-      </CardFooter>
-    </Card>
-  );
-};
